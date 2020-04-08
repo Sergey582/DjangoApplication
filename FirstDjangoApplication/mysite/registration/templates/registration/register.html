@@ -1,0 +1,12 @@
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{LANGUAGE_CODE}}" lang="{{LANGUAGE_CODE}}">
+    <head>
+         <link rel="stylesheet"  href="{% static 'registration/css/base.css' %}" />
+    </head>
+    <body>
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Зарегистрировать">
+        </form>
+    </body>
+</html>

@@ -36,6 +36,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration',
+    'bootstrap3',
+    'bootstrap_themes',
+    'django_extensions',
+    'el_pagination',
+
 ]
 
 MIDDLEWARE = [
@@ -53,14 +59,23 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'registration/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'django.contrib.auth.context_processors.auth',
+
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+
             ],
         },
     },
@@ -72,13 +87,14 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-       'NAME': 'postgres',
-       'USER': 'postgres',
-       'HOST': 'db',
-       'PORT': 5432,
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'test',
+        'USER': 'postgres',
+        'PASSWORD': '1',
+        'HOST': '127.0.0.1',
+        'PORT': 5432,
+    }
 }
 
 # Password validation
@@ -116,3 +132,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+LOGIN_REDIRECT_URL = '/polls'
+DEFAULT_FILE_STORAGE = "django.contrib.staticfiles.finders.AppDirectoriesFinder"
